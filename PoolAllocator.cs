@@ -25,6 +25,15 @@ public class PoolAllocator<T> {
         public int Next;
     }
   
+    public IEnumerable<T> GetItems()
+    {
+        foreach (var i in _items)
+        {
+            yield return i.Value;
+        }
+    }
+  
+
     public int Add(T item) {
         if (_freeHead == -1)
             throw new InvalidOperationException("No free slots available.");
